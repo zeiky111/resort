@@ -1,22 +1,18 @@
-// Pexels API for Philippine Beach Images (Free, Clear API)
-const PEXELS_API_KEY = '563492ad6f91700001000100b5e6b5c40b284885cba5a81e36fa2e62';
-const PEXELS_API = 'https://api.pexels.com/v1/search?query=philippines%20beach%20resort&per_page=12&page=';
+// Pixabay API for Philippine Beach Images (No CORS Issues)
+const PIXABAY_API_KEY = '43437748-1b4e5c8c5f5e2a0b5c8e1d2f';
 
 // Load Hero Background Image
 async function loadHeroBackground() {
     try {
-        const response = await fetch(`${PEXELS_API}1`, {
-            headers: {
-                'Authorization': PEXELS_API_KEY
-            }
-        });
+        const response = await fetch(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=philippines%20beach%20resort%20tropical&image_type=photo&per_page=1&order=popular`);
         
         if (response.ok) {
             const data = await response.json();
-            if (data.photos && data.photos.length > 0) {
-                const photoUrl = data.photos[0].src.large2x;
+            if (data.hits && data.hits.length > 0) {
+                const photoUrl = data.hits[0].largeImageURL;
                 const hero = document.querySelector('.hero');
                 hero.style.backgroundImage = `url('${photoUrl}')`;
+                console.log('Hero background loaded successfully');
                 return;
             }
         }
@@ -29,28 +25,25 @@ async function loadHeroBackground() {
     hero.style.backgroundImage = 'linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%)';
 }
 
-// Load Gallery Images from Pexels API
+// Load Gallery Images from Pixabay API
 async function loadGalleryImages() {
     try {
-        const response = await fetch(`${PEXELS_API}1`, {
-            headers: {
-                'Authorization': PEXELS_API_KEY
-            }
-        });
+        const response = await fetch(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=philippines%20beach%20tropical&image_type=photo&per_page=12&order=popular`);
         
         if (response.ok) {
             const data = await response.json();
             const galleryGrid = document.getElementById('gallery-grid');
             
-            if (data.photos && data.photos.length > 0) {
-                galleryGrid.innerHTML = data.photos.slice(0, 6).map((photo, index) => `
+            if (data.hits && data.hits.length > 0) {
+                galleryGrid.innerHTML = data.hits.slice(0, 6).map((photo, index) => `
                     <div class="gallery-item" style="animation-delay: ${index * 0.1}s;">
-                        <img src="${photo.src.medium}" alt="${photo.alt || 'Philippine Beach Resort'}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="${photo.webformatURL}" alt="Philippine Beach" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="gallery-overlay">
-                            <p>${photo.photographer || 'Island Paradise'}</p>
+                            <p>🏝️ Island Paradise</p>
                         </div>
                     </div>
                 `).join('');
+                console.log('Gallery images loaded successfully');
                 return;
             }
         }
@@ -93,8 +86,14 @@ function shiftColor(hex) {
 
 // Load images on page load
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Loading Philippine beach images...');
     loadHeroBackground();
     loadGalleryImages();
+    setTimeout(() => {
+        if (!document.querySelector('.hero').style.backgroundImage) {
+            loadHeroBackground();
+        }
+    }, 1000);
 });
 
 // Hamburger Menu Toggle

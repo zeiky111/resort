@@ -332,6 +332,8 @@ body {
     overflow: hidden;
     cursor: pointer;
     animation: slideUp 0.6s ease-out;
+    background-size: cover;
+    background-position: center;
 }
 
 .gallery-item img {

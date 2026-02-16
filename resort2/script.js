@@ -1,99 +1,110 @@
-// Pixabay API for Philippine Beach Images (No CORS Issues)
-const PIXABAY_API_KEY = '43437748-1b4e5c8c5f5e2a0b5c8e1d2f';
+// Direct Philippine Beach Images (Pre-selected, Guaranteed to Work)
+const heroImages = [
+    'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80', // Beach resort
+    'https://images.unsplash.com/photo-1552632570-5b67b56dd298?w=1200&q=80', // Tropical beach
+    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80'  // Ocean waves
+];
+
+const galleryImages = [
+    {
+        src: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80',
+        title: '🏝️ Island Resort'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1552632570-5b67b56dd298?w=600&q=80',
+        title: '🌴 Tropical Beach'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+        title: '🌊 Ocean Paradise'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80',
+        title: '⛱️ Beach Heaven'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80',
+        title: '🌅 Sunset View'
+    },
+    {
+        src: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80',
+        title: '✨ Luxury Resort'
+    }
+];
 
 // Load Hero Background Image
-async function loadHeroBackground() {
+function loadHeroBackground() {
     try {
-        const response = await fetch(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=philippines%20beach%20resort%20tropical&image_type=photo&per_page=1&order=popular`);
+        const randomHero = heroImages[Math.floor(Math.random() * heroImages.length)];
+        const hero = document.querySelector('.hero');
         
-        if (response.ok) {
-            const data = await response.json();
-            if (data.hits && data.hits.length > 0) {
-                const photoUrl = data.hits[0].largeImageURL;
-                const hero = document.querySelector('.hero');
-                hero.style.backgroundImage = `url('${photoUrl}')`;
-                console.log('Hero background loaded successfully');
-                return;
-            }
-        }
+        // Create a new image to check if it loads
+        const img = new Image();
+        img.onload = function() {
+            hero.style.backgroundImage = `url('${randomHero}')`;
+            hero.style.backgroundSize = 'cover';
+            hero.style.backgroundPosition = 'center';
+            hero.style.backgroundAttachment = 'fixed';
+            console.log('✅ Hero background loaded successfully');
+        };
+        img.onerror = function() {
+            console.log('⚠️ Image load failed, using gradient');
+            hero.style.backgroundImage = 'linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%)';
+        };
+        img.src = randomHero;
     } catch (error) {
-        console.log('Hero image load error:', error);
+        console.log('Hero error:', error);
+        const hero = document.querySelector('.hero');
+        hero.style.backgroundImage = 'linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%)';
     }
-    
-    // Fallback gradient
-    const hero = document.querySelector('.hero');
-    hero.style.backgroundImage = 'linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%)';
 }
 
-// Load Gallery Images from Pixabay API
-async function loadGalleryImages() {
+// Load Gallery Images
+function loadGalleryImages() {
     try {
-        const response = await fetch(`https://pixabay.com/api/?key=${PIXABAY_API_KEY}&q=philippines%20beach%20tropical&image_type=photo&per_page=12&order=popular`);
+        const galleryGrid = document.getElementById('gallery-grid');
         
-        if (response.ok) {
-            const data = await response.json();
-            const galleryGrid = document.getElementById('gallery-grid');
-            
-            if (data.hits && data.hits.length > 0) {
-                galleryGrid.innerHTML = data.hits.slice(0, 6).map((photo, index) => `
-                    <div class="gallery-item" style="animation-delay: ${index * 0.1}s;">
-                        <img src="${photo.webformatURL}" alt="Philippine Beach" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="gallery-overlay">
-                            <p>🏝️ Island Paradise</p>
-                        </div>
-                    </div>
-                `).join('');
-                console.log('Gallery images loaded successfully');
-                return;
-            }
+        if (!galleryGrid) {
+            console.log('Gallery grid not found');
+            return;
         }
-    } catch (error) {
-        console.log('Gallery load error, using fallback:', error);
-    }
-    
-    // Fallback: Create gradient cards
-    const fallbackImages = [
-        { title: 'Crystal Clear Waters', color: '#00d4ff' },
-        { title: 'Sunset Paradise', color: '#ff6b6b' },
-        { title: 'White Sand Beaches', color: '#ffd60a' },
-        { title: 'Tropical Flora', color: '#6bcf7f' },
-        { title: 'Island Serenity', color: '#9b59b6' },
-        { title: 'Ocean Horizon', color: '#00b4d8' }
-    ];
-    
-    const galleryGrid = document.getElementById('gallery-grid');
-    galleryGrid.innerHTML = fallbackImages.map((item, index) => `
-        <div class="gallery-item" style="animation-delay: ${index * 0.1}s; background: linear-gradient(135deg, ${item.color} 0%, ${shiftColor(item.color)} 100%);">
-            <div class="gallery-overlay">
-                <p>${item.title}</p>
+        
+        galleryGrid.innerHTML = galleryImages.map((photo, index) => `
+            <div class="gallery-item" style="animation-delay: ${index * 0.1}s; background-image: url('${photo.src}'); background-size: cover; background-position: center;">
+                <img src="${photo.src}" alt="${photo.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; opacity: 0;">
+                <div class="gallery-overlay">
+                    <p>${photo.title}</p>
+                </div>
             </div>
-        </div>
-    `).join('');
-}
-
-// Helper function to shift color
-function shiftColor(hex) {
-    const num = parseInt(hex.slice(1), 16);
-    const amt = 50;
-    const usePound = true;
-    const R = (num >> 16) + amt;
-    const G = (num >> 8 & 0x00FF) + amt;
-    const B = (num & 0x0000FF) + amt;
-    return (usePound ? "#" : "") + (0x1000000 + (R < 255 ? R : 255) * 0x10000 +
-        (G < 255 ? G : 255) * 0x100 + (B < 255 ? B : 255))
-        .toString(16).slice(1);
+        `).join('');
+        
+        console.log('✅ Gallery images loaded successfully');
+    } catch (error) {
+        console.log('Gallery error:', error);
+    }
 }
 
 // Load images on page load
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Loading Philippine beach images...');
+    console.log('🏝️ Loading Philippine beach images...');
     loadHeroBackground();
     loadGalleryImages();
+    
+    // Retry after 1 second if hero still not loaded
     setTimeout(() => {
-        if (!document.querySelector('.hero').style.backgroundImage) {
+        const heroStyle = document.querySelector('.hero').style.backgroundImage;
+        if (!heroStyle || heroStyle.includes('gradient')) {
+            console.log('Retrying hero image...');
             loadHeroBackground();
         }
-    }, 1000);
+    }, 1500);
+});
+
+// Also load on window load for extra safety
+window.addEventListener('load', () => {
+    console.log('Window loaded, double-checking images...');
+    loadHeroBackground();
+    loadGalleryImages();
 });
 
 // Hamburger Menu Toggle

@@ -769,57 +769,370 @@ body {
     animation: slideUp 0.8s ease-out forwards;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    gap: 6px;
+    z-index: 1001;
+    padding: 0.5rem;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: linear-gradient(135deg, #e94560, #f8b500);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+    }
+
+    .nav-menu.active {
+        max-height: 300px;
+    }
+
+    .nav-menu li {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+    }
+
+    .nav-menu li a {
+        display: block;
+    }
+
+    .hero {
+        margin-top: 60px;
+        height: auto;
+        min-height: 70vh;
+        padding: 3rem 0;
+    }
+
     .hero-title {
         font-size: 2.5rem;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
-    .nav-menu {
-        gap: 1rem;
-        font-size: 0.9rem;
+    .logo {
+        font-size: 1.4rem;
     }
 
     .section-title {
         font-size: 2rem;
     }
 
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .rooms-section {
+        padding: 4rem 1rem;
+    }
+
+    .amenities-section {
+        padding: 4rem 1rem;
+    }
+
     .rooms-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .amenity-card {
+        padding: 1.5rem;
     }
 
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .booking-form {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .booking-form button[type="submit"] {
+        padding: 1rem;
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .room-btn {
+        padding: 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.9rem 1rem;
+        font-size: 16px;
+    }
+
+    .weather-card {
+        padding: 1.5rem;
+    }
+
+    .weather-card > div {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .hero {
+        margin-top: 60px;
+        min-height: 60vh;
+        padding: 2rem 0;
+    }
+
     .hero-title {
         font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
     }
 
     .logo {
-        font-size: 1.3rem;
-    }
-
-    .nav-menu {
-        gap: 0.5rem;
-        font-size: 0.8rem;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
     }
 
     .section-title {
         font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .rooms-section,
+    .amenities-section,
+    .booking-section,
+    .contact-section,
+    .testimonials-section {
+        padding: 3rem 1rem;
+    }
+
+    .rooms-container,
+    .amenities-container,
+    .booking-container,
+    .contact-container,
+    .testimonials-container {
+        padding: 0;
+    }
+
+    .room-card {
+        margin: 0;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .room-info {
+        padding: 1.5rem;
+    }
+
+    .room-image {
+        height: 200px;
+    }
+
+    .room-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .room-features {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .room-price {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .amenity-card {
+        padding: 1.2rem;
+    }
+
+    .amenity-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .amenity-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .amenity-card p {
+        font-size: 0.85rem;
+    }
+
+    .booking-form {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 1.2rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.8rem;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+
+    .booking-form button[type="submit"] {
+        padding: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .room-btn {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .contact-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-card p {
+        font-size: 0.9rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.2rem;
+    }
+
+    .testimonial-card p:nth-of-type(1) {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-card h4 {
+        font-size: 0.95rem;
+    }
+
+    .weather-card {
+        padding: 1.2rem;
+    }
+
+    .weather-card > div {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-menu {
+        top: 55px;
+    }
+
+    .footer {
+        padding: 1.5rem;
+    }
+
+    .footer-content p {
+        font-size: 0.9rem;
     }
 }

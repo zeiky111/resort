@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meridian - Luxury Resort Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MERIDIAN</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#rooms" class="nav-link">Rooms</a></li>
+                <li><a href="#amenities" class="nav-link">Amenities</a></li>
+                <li><a href="#weather" class="nav-link">Weather</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Experience Luxury Redefined</h1>
+                <p class="hero-subtitle">Escape to paradise with our world-class amenities and exceptional service</p>
+                <button class="cta-button" onclick="document.getElementById('rooms').scrollIntoView({behavior: 'smooth'})">Explore Rooms</button>
+            </div>
+            <div class="hero-background"></div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather-section">
+        <div class="weather-container">
+            <h2 class="section-title">Local Weather</h2>
+            <div id="weather-widget" class="weather-widget">
+                <div class="weather-card">
+                    <div class="weather-spinner"></div>
+                    <p>Loading weather...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms-section">
+        <div class="rooms-container">
+            <h2 class="section-title">Our Exclusive Rooms</h2>
+            <p class="section-subtitle">Hand-crafted luxury accommodations with premium finishes</p>
+            
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <div class="room-info">
+                        <h3>Deluxe Suite</h3>
+                        <p class="room-features">King bed • Ocean view • Private balcony • Smart TV</p>
+                        <div class="room-price">$299<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <div class="room-info">
+                        <h3>Presidential Suite</h3>
+                        <p class="room-features">2 Bedrooms • Spa bath • Panoramic view • Concierge</p>
+                        <div class="room-price">$599<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                    <div class="room-info">
+                        <h3>Ocean View Room</h3>
+                        <p class="room-features">Queen bed • Beach access • Infinity view • Jacuzzi</p>
+                        <div class="room-price">$449<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 4 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+                    <div class="room-info">
+                        <h3>Penthouse</h3>
+                        <p class="room-features">3 Levels • Private pool • Cinema room • Butler service</p>
+                        <div class="room-price">$999<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 5 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <div class="room-info">
+                        <h3>Cottage Retreat</h3>
+                        <p class="room-features">Private cabin • Garden view • Fireplace • Sauna</p>
+                        <div class="room-price">$379<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 6 -->
+                <div class="room-card">
+                    <div class="room-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <div class="room-info">
+                        <h3>Wellness Suite</h3>
+                        <p class="room-features">Spa amenities • Meditation room • Yoga studio • Sauna</p>
+                        <div class="room-price">$529<span>/night</span></div>
+                        <button class="room-btn">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities-section">
+        <div class="amenities-container">
+            <h2 class="section-title">World-Class Amenities</h2>
+            
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">🏊</div>
+                    <h3>Infinity Pool</h3>
+                    <p>Olympic-sized heated infinity pool with panoramic ocean views</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🍽️</div>
+                    <h3>Fine Dining</h3>
+                    <p>Michelin-trained chefs serving international and local cuisine</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🧘</div>
+                    <h3>Spa & Wellness</h3>
+                    <p>Full-service spa with holistic treatments and yoga classes</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🎾</div>
+                    <h3>Sports Facilities</h3>
+                    <p>Tennis courts, basketball, golf simulator, and beach volleyball</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🎬</div>
+                    <h3>Entertainment</h3>
+                    <p>Live music, cinema, gaming lounge, and nightly shows</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🌴</div>
+                    <h3>Beach Access</h3>
+                    <p>Private beachfront with water sports and cabana service</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">💼</div>
+                    <h3>Business Center</h3>
+                    <p>State-of-the-art conference facilities with high-speed internet</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">🚗</div>
+                    <h3>Concierge Service</h3>
+                    <p>24/7 personal concierge for all your travel and dining needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">Guest Testimonials</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Absolutely exceptional experience. The attention to detail at Meridian is unmatched. Every moment was perfection."</p>
+                    <h4>Sarah Mitchell</h4>
+                    <p class="testimonial-role">Entrepreneur</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"The views are breathtaking, the service impeccable, and the food divine. This is luxury at its finest!"</p>
+                    <h4>James Chen</h4>
+                    <p class="testimonial-role">Tech Executive</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"We celebrated our 25th anniversary here. Every detail was perfect. We'll definitely return!"</p>
+                    <h4>Emma & Robert</h4>
+                    <p class="testimonial-role">Retired Travelers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <h2 class="section-title">Book Your Stay</h2>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Room Type</option>
+                        <option value="deluxe">Deluxe Suite</option>
+                        <option value="presidential">Presidential Suite</option>
+                        <option value="ocean">Ocean View Room</option>
+                        <option value="penthouse">Penthouse</option>
+                        <option value="cottage">Cottage Retreat</option>
+                        <option value="wellness">Wellness Suite</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button">Reserve Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📍 Location</h3>
+                    <p>Beachfront Paradise<br>Tropical Islands, Paradise 12345<br>Oceanview Peninsula</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📞 Contact</h3>
+                    <p>Phone: +1 (555) 123-4567<br>Email: info@meridian-resort.com<br>Fax: +1 (555) 123-4568</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>🕐 Hours</h3>
+                    <p>Reception: 24/7 Open<br>Restaurant: 6:00 AM - 11:00 PM<br>Spa: 8:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Meridian Luxury Resort. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -16,11 +16,26 @@ if (hamburger && navMenu) {
         });
     });
 
-    // Close menu when scrolling
-    window.addEventListener('scroll', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     });
+}
+
+// Prevent body scroll when menu is open
+if (navMenu && hamburger) {
+    const observer = new MutationObserver(() => {
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    observer.observe(navMenu, { attributes: true, attributeFilter: ['class'] });
 }
 
 // Weather API Integration using Open-Meteo (Free, No API Key Required)

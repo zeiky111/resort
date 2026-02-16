@@ -154,6 +154,20 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 84, 125, 0.7) 0%, rgba(36, 123, 160, 0.7) 100%);
+    z-index: 1;
 }
 
 .hero-gradient {
@@ -162,21 +176,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%);
-    animation: gradientShift 15s ease infinite;
+    background: transparent;
     z-index: -1;
-}
-
-@keyframes gradientShift {
-    0% {
-        background: linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%);
-    }
-    50% {
-        background: linear-gradient(135deg, #00d4ff 0%, #0a547d 50%, #247ba0 100%);
-    }
-    100% {
-        background: linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%);
-    }
 }
 
 .hero-particles {

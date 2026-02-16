@@ -1,55 +1,81 @@
-// Unsplash API Integration for Philippine Resort Images
+// Pexels API for Philippine Beach Images (Free, Clear API)
+const PEXELS_API_KEY = '563492ad6f91700001000100b5e6b5c40b284885cba5a81e36fa2e62';
+const PEXELS_API = 'https://api.pexels.com/v1/search?query=philippines%20beach%20resort&per_page=12&page=';
+
+// Load Hero Background Image
+async function loadHeroBackground() {
+    try {
+        const response = await fetch(`${PEXELS_API}1`, {
+            headers: {
+                'Authorization': PEXELS_API_KEY
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            if (data.photos && data.photos.length > 0) {
+                const photoUrl = data.photos[0].src.large2x;
+                const hero = document.querySelector('.hero');
+                hero.style.backgroundImage = `url('${photoUrl}')`;
+                return;
+            }
+        }
+    } catch (error) {
+        console.log('Hero image load error:', error);
+    }
+    
+    // Fallback gradient
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundImage = 'linear-gradient(135deg, #0a547d 0%, #247ba0 50%, #00d4ff 100%)';
+}
+
+// Load Gallery Images from Pexels API
 async function loadGalleryImages() {
     try {
-        // Using Unsplash API with no authentication needed for basic usage
-        const unsplashAPI = 'https://api.unsplash.com/search/photos?client_id=YOUR_UNSPLASH_KEY&query=philippines+beach+resort+tropical&per_page=6&orientation=landscape';
-        
-        // Fallback gallery items if API fails
-        const fallbackImages = [
-            { title: 'Crystal Clear Waters', color: '#00d4ff' },
-            { title: 'Sunset Paradise', color: '#ff6b6b' },
-            { title: 'White Sand Beaches', color: '#ffd60a' },
-            { title: 'Tropical Flora', color: '#6bcf7f' },
-            { title: 'Island Serenity', color: '#9b59b6' },
-            { title: 'Ocean Horizon', color: '#00b4d8' }
-        ];
-
-        const galleryGrid = document.getElementById('gallery-grid');
-        
-        try {
-            // Try fetching from Unsplash (works without API key in basic mode)
-            const response = await fetch('https://api.unsplash.com/search/photos?query=philippines+beach+tropical+resort&per_page=6&order_by=popular&orientation=landscape');
-            
-            if (response.ok) {
-                const data = await response.json();
-                if (data.results && data.results.length > 0) {
-                    galleryGrid.innerHTML = data.results.map((photo, index) => `
-                        <div class="gallery-item" style="animation-delay: ${index * 0.1}s;">
-                            <img src="${photo.urls.regular}" alt="${photo.alt_description || 'Gallery image'}" loading="lazy">
-                            <div class="gallery-overlay">
-                                <p>${photo.alt_description || 'Island Paradise'}</p>
-                            </div>
-                        </div>
-                    `).join('');
-                    return;
-                }
+        const response = await fetch(`${PEXELS_API}1`, {
+            headers: {
+                'Authorization': PEXELS_API_KEY
             }
-        } catch (apiError) {
-            console.log('Unsplash API not available, using fallback images');
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            const galleryGrid = document.getElementById('gallery-grid');
+            
+            if (data.photos && data.photos.length > 0) {
+                galleryGrid.innerHTML = data.photos.slice(0, 6).map((photo, index) => `
+                    <div class="gallery-item" style="animation-delay: ${index * 0.1}s;">
+                        <img src="${photo.src.medium}" alt="${photo.alt || 'Philippine Beach Resort'}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="gallery-overlay">
+                            <p>${photo.photographer || 'Island Paradise'}</p>
+                        </div>
+                    </div>
+                `).join('');
+                return;
+            }
         }
-
-        // Fallback: Create gradient cards
-        galleryGrid.innerHTML = fallbackImages.map((item, index) => `
-            <div class="gallery-item" style="animation-delay: ${index * 0.1}s; background: linear-gradient(135deg, ${item.color} 0%, ${shiftColor(item.color)} 100%);">
-                <div class="gallery-overlay">
-                    <p>${item.title}</p>
-                </div>
-            </div>
-        `).join('');
-
     } catch (error) {
-        console.error('Gallery load error:', error);
+        console.log('Gallery load error, using fallback:', error);
     }
+    
+    // Fallback: Create gradient cards
+    const fallbackImages = [
+        { title: 'Crystal Clear Waters', color: '#00d4ff' },
+        { title: 'Sunset Paradise', color: '#ff6b6b' },
+        { title: 'White Sand Beaches', color: '#ffd60a' },
+        { title: 'Tropical Flora', color: '#6bcf7f' },
+        { title: 'Island Serenity', color: '#9b59b6' },
+        { title: 'Ocean Horizon', color: '#00b4d8' }
+    ];
+    
+    const galleryGrid = document.getElementById('gallery-grid');
+    galleryGrid.innerHTML = fallbackImages.map((item, index) => `
+        <div class="gallery-item" style="animation-delay: ${index * 0.1}s; background: linear-gradient(135deg, ${item.color} 0%, ${shiftColor(item.color)} 100%);">
+            <div class="gallery-overlay">
+                <p>${item.title}</p>
+            </div>
+        </div>
+    `).join('');
 }
 
 // Helper function to shift color
@@ -65,8 +91,11 @@ function shiftColor(hex) {
         .toString(16).slice(1);
 }
 
-// Load gallery on page load
-document.addEventListener('DOMContentLoaded', loadGalleryImages);
+// Load images on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadHeroBackground();
+    loadGalleryImages();
+});
 
 // Hamburger Menu Toggle
 const hamburger = document.getElementById('hamburger');

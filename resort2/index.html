@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paraíso Island Resort - Philippines Luxury Escape</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🏝️ PARAÍSO</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#villas" class="nav-link">Villas</a></li>
+                <li><a href="#activities" class="nav-link">Activities</a></li>
+                <li><a href="#contact" class="nav-link">Book</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Discover Paradise in the Philippines</h1>
+                <p class="hero-subtitle">Turquoise waters, white sand beaches, and island luxury await</p>
+                <button class="cta-button" onclick="document.getElementById('villas').scrollIntoView({behavior: 'smooth'})">Explore Villas</button>
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- Gallery Section with API -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="section-title">Island Beauty Gallery</h2>
+            <p class="section-subtitle">Experience the breathtaking landscapes of our island paradise</p>
+            
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Loaded from API -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Villas Section -->
+    <section id="villas" class="villas-section">
+        <div class="villas-container">
+            <h2 class="section-title">Luxury Island Villas</h2>
+            <p class="section-subtitle">Hand-crafted beachfront sanctuaries with authentic Filipino hospitality</p>
+            
+            <div class="villas-grid">
+                <!-- Villa 1 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Nipa Hut Villa</h3>
+                        <p class="villa-features">Traditional design • Beachfront • 2 bedrooms • Outdoor shower</p>
+                        <div class="villa-price">₱8,500<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+
+                <!-- Villa 2 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Sunset Villa</h3>
+                        <p class="villa-features">Ocean view • 3 bedrooms • Infinity pool • Private deck</p>
+                        <div class="villa-price">₱12,500<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+
+                <!-- Villa 3 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #fed766 0%, #fe4a49 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Sanctuary Retreat</h3>
+                        <p class="villa-features">Spa amenities • 2 levels • Nature view • Meditation pavilion</p>
+                        <div class="villa-price">₱10,999<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+
+                <!-- Villa 4 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #6bcf7f 0%, #2d6a4f 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Tropical Palace</h3>
+                        <p class="villa-features">Luxury penthouse • 4 bedrooms • Panoramic view • Sauna</p>
+                        <div class="villa-price">₱18,999<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+
+                <!-- Villa 5 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #9b59b6 0%, #3d0066 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Royal Bungalow</h3>
+                        <p class="villa-features">King bedroom • Garden • Plunge pool • Coastal path access</p>
+                        <div class="villa-price">₱9,500<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+
+                <!-- Villa 6 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background: linear-gradient(135deg, #00b4d8 0%, #0096c7 100%);"></div>
+                    <div class="villa-info">
+                        <h3>Coral Haven</h3>
+                        <p class="villa-features">Overwater bungalow • Snorkeling access • Solar powered • Eco-luxury</p>
+                        <div class="villa-price">₱14,999<span>/night</span></div>
+                        <button class="villa-btn">Reserve Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities-section">
+        <div class="activities-container">
+            <h2 class="section-title">Island Adventures</h2>
+            <p class="section-subtitle">Unforgettable experiences in paradise</p>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">🤿</div>
+                    <h3>Snorkeling & Diving</h3>
+                    <p>Explore vibrant coral reefs and tropical marine life with certified guides</p>
+                    <span class="activity-tag">Water Sports</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🚤</div>
+                    <h3>Island Hopping</h3>
+                    <p>Visit hidden islands and secret lagoons by traditional outrigger boat</p>
+                    <span class="activity-tag">Adventure</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🧘</div>
+                    <h3>Wellness Retreat</h3>
+                    <p>Traditional Filipino healing therapies and sunrise yoga sessions</p>
+                    <span class="activity-tag">Wellness</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🍜</div>
+                    <h3>Culinary Experience</h3>
+                    <p>Farm-to-table Filipino cuisine and beachside cooking classes</p>
+                    <span class="activity-tag">Dining</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🌅</div>
+                    <h3>Sunset Cruise</h3>
+                    <p>Romantic evening cruises with cocktails and live acoustic music</p>
+                    <span class="activity-tag">Romance</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🏖️</div>
+                    <h3>Beach Picnic</h3>
+                    <p>Private strand dinners on pristine white sand beaches</p>
+                    <span class="activity-tag">Exclusive</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">📸</div>
+                    <h3>Photo Safari</h3>
+                    <p>Professional photography tours capturing island beauty and wildlife</p>
+                    <span class="activity-tag">Cultural</span>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">🐚</div>
+                    <h3>Marine Conservation</h3>
+                    <p>Participate in coral restoration and ocean cleanup initiatives</p>
+                    <span class="activity-tag">Eco-Tourism</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <p class="stat-label">Exclusive Villas</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5★</div>
+                <p class="stat-label">Guest Rating</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <p class="stat-label">Island Adventures</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99%</div>
+                <p class="stat-label">Return Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">Guest Stories</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Paraíso is truly paradise. The hospitality, the views, the tranquility - everything exceeded our expectations!"</p>
+                    <h4>Maria Santos</h4>
+                    <p class="testimonial-role">Manila</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Best island escape we've ever experienced. The villas are stunning and the staff treats you like family."</p>
+                    <h4>James Wilson</h4>
+                    <p class="testimonial-role">United States</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Authentic Filipino hospitality meets world-class luxury. We're already planning our return!"</p>
+                    <h4>Anna & Miguel</h4>
+                    <p class="testimonial-role">Cebu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <h2 class="section-title">Reserve Your Paradise</h2>
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Select Villa Type</option>
+                        <option value="nipa">Nipa Hut Villa</option>
+                        <option value="sunset">Sunset Villa</option>
+                        <option value="sanctuary">Sanctuary Retreat</option>
+                        <option value="palace">Tropical Palace</option>
+                        <option value="royal">Royal Bungalow</option>
+                        <option value="coral">Coral Haven</option>
+                    </select>
+                </div>
+                <button type="submit" class="cta-button">Book Now</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📍 Location</h3>
+                    <p>Palawan Island, Philippines<br>Coron, Busuanga<br>Resort Address: Paradise Point Bay</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📞 Contact Info</h3>
+                    <p>Phone: +63 (939) 123-4567<br>Email: hello@paraisoIsland.ph<br>WhatsApp: +63 (939) 123-4567</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>🕐 Available</h3>
+                    <p>Reception: 24/7 Open<br>Restaurant: 6:30 AM - 10:30 PM<br>Activities: Daily booking available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Paraíso Island Resort Philippines. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
